@@ -1,0 +1,136 @@
+h2,
+h3 {
+  color: #000;
+  font-weight: unset;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.score {
+  margin-left: 5px;
+  color: var(--main-header);
+}
+
+.percentage {
+  font-size: 30px;
+  margin-left: 10px;
+  color: var(--main-header);
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.alert {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #42ba96;
+}
+
+.warning {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #eed202;
+}
+
+.choice-container {
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1.2rem;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 0px;
+  border: solid 1px rgba(0, 0, 0);
+  box-shadow: rgb(255 255 255 / 60%) 0px 0px 0px 1px inset;
+  color: rgb(0, 0, 0);
+  max-width: 100%;
+  min-width: 50vw;
+  min-height: 40px;
+  outline: 0px;
+  transition-duration: 0.1s;
+}
+
+.radio {
+  padding: 0.5rem 1.5rem;
+}
+
+.choice-text {
+  padding: 0.8rem;
+}
+
+.upnext {
+  margin-bottom: 140px;
+}
+
+button {
+  border-radius: 0px;
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  border: none;
+  height: 45px;
+  width: 150px;
+  // margin-left: 5px;
+  // margin-right: 5px;
+  display: inline-block;
+}
+
+button:disabled,
+button[disabled] {
+  border-radius: 0px;
+  color: #fff;
+  background-color: #cccccc;
+  border-color: #cccccc;
+  border: none;
+  height: 45px;
+  width: 150px;
+  // margin-left: 5px;
+  // margin-right: 5px;
+  display: inline-block;
+}
+
+/* On screens that are 600px wide or less */
+@media screen and (max-width: 600px) {
+  button {
+    border-radius: 0px;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    border: none;
+    height: 45px;
+    width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block;
+  }
+}

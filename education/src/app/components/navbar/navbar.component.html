@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+
+  <a [routerLink]="['']" aria-current="page" class="w-nav-brand w--current" aria-label="home"
+    style="text-decoration: none;">
+    <!-- <img src="assets/Logos/logo.png" height="100" alt="" class="image"> -->
+    <h2>Extreme Focus</h2>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Explore
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">Action</a>
+          <a class="dropdown-item">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item">Something else here</a>
+        </div>
+      </li> -->
+    </ul>
+
+    <div class="searchBar">
+      <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Search" value="" />
+      <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,
+            14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,
+            16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,
+            12 14,9.5C14,7 12,5 9.5,5Z" />
+        </svg>
+      </button>
+    </div>
+
+
+    <li class="nav-item">
+      <a [routerLink]="['/home']" class="nav-link">
+        <span class="ti-book"></span>
+        My Learning
+        <span class="sr-only"></span>
+      </a>
+    </li>
+
+    <div class="social-icons">
+
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li *ngFor="let user of profile2">
+              <a>
+                <span class="ti-user"></span>
+                <span>{{ user.name }}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/home']">
+                <span class="ti-book"></span>
+                <span>My learning</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/mybooking']">
+                <span class="ti-calendar"></span>
+                <span>My Booking</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/more-subject']">
+                <span class="ti-shopping-cart"></span>
+                <span>Purchase More Subjects</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/subscription']">
+                <span class="ti-credit-card"></span>
+                <span>My Subscription</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Log Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

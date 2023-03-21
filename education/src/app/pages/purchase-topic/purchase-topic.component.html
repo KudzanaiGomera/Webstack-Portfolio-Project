@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+
+<h2 class="heading-primary" style="color: #7a8943;">Purchase Topic</h2>
+<div class="plan-section" #content>
+
+  <!-- just to remove the glitch before api is called -->
+  <div class="plan master" *ngIf="content_id === undefined">
+    <h3 class="plan-price"><span class="dollar">R</span>450</h3>
+    <ul class="plan-features">
+      <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+      <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+      <li class="plan-item">Q&A 24/7 support with any tutor</li>
+      <li class="plan-item">Free exams preparation resources</li>
+    </ul>
+
+    <a class="btn buy-now"
+      href="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=19434569&item_name=Eworksa&email_confirmation=1&confirmation_address=junior@katangatech.co.za&item_description=4 free 1 on 1 online tutoring.
+    One Free Topic Content.
+    24hours per day of tutoring support.
+    &return_url=https://sgcholdings.co.za/success-topic.php?id={{content?.id}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=450">
+      Buy Topic
+      <img src="assets/Logos/payfast.png" alt="No payfast">
+    </a>
+  </div>
+
+  <div class="plan master" *ngFor="let content of content_id">
+    <h3 class="plan-price"><span class="dollar">R</span>450</h3>
+    <ul class="plan-features">
+      <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+      <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+      <li class="plan-item">Q&A 24/7 support with any tutor</li>
+      <li class="plan-item">Free exams preparation resources</li>
+    </ul>
+    <!-- <a class="btn buy-now"
+      href="https://sandbox.payfast.co.za/eng/process?cmd=_paynow&receiver=10026088&item_name=Eworksa&email_confirmation=1&confirmation_address=kudzanai.gomera@hotmail.com&item_description=4 free 1 on 1 online tutoring.
+      Unlimited Access to Topic Content.
+      24hours per day of tutoring support.
+      &return_url=https://sgcholdings.co.za/success-topic.php?id={{content?.id}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=450">
+      Buy Topic
+      <img src="assets/Logos/payfast.png" alt="No payfast">
+    </a> -->
+    <a class="btn buy-now"
+      href="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=19434569&item_name=Eworksa&email_confirmation=1&confirmation_address=junior@katangatech.co.za&item_description=4 free 1 on 1 online tutoring.
+    One Free Topic Content.
+    24hours per day of tutoring support.
+    &return_url=https://sgcholdings.co.za/success-topic.php?id={{content?.id}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=450">
+      Buy Topic
+      <img src="assets/Logos/payfast.png" alt="No payfast">
+    </a>
+  </div>
+
+  <div class="plan master" *ngIf="content_id !== undefined">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>450</h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div *ngFor="let content of content_id">
+        <a class="btn instant-eft" (click)="success(content?.id)">
+          Instant EFT
+          <img src="assets/Logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- just to remove the glitch before api is called -->
+  <div class="plan master" *ngIf="content_id === undefined">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>450</h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <a class="btn instant-eft">
+        Instant EFT
+        <img src="assets/Logos/payfast.png" alt="No payfast">
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

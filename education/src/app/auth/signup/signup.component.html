@@ -1,0 +1,51 @@
+<!-- start navigation -->
+<app-navigation></app-navigation>
+<!-- end navigation -->
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <h2>Sign up</h2>
+      <form class="form" #SignUpForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="alert alert-danger" [hidden]="!error">
+          {{error}}
+        </div>
+        <input type="text" name="name" placeholder="Full name" [(ngModel)]="form.name" required>
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="form.email" required>
+        <input type="text" name="cellnumber" placeholder="Cell Number" [(ngModel)]="form.cellnumber" required>
+        <div class="input-wrap">
+          <div class="form-group">
+            <input list="grade" name="grade" placeholder="Select Grade" class="form-control" [(ngModel)]="form.grade"
+              required>
+            <datalist id="grade">
+              <option>Grade 8</option>
+              <option>Grade 9</option>
+              <option>Grade 10</option>
+              <option>Grade 11</option>
+              <option>Grade 12</option>
+            </datalist>
+          </div>
+        </div>
+        <input type="password" name="password" placeholder="Password" [(ngModel)]="form.password" required>
+        <button type="submit" id="login-button" [disabled]="!SignUpForm.valid">Register</button>
+      </form>
+    </div>
+
+    <ul class="bg-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</body>
+
+<!-- start footer -->
+<app-footer></app-footer>
+<!-- end footer -->

@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      What subject are you looking for?
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let subject of subjects" (click)="selectSubject(subject?.name)">
+          <h3>
+            <span class="ti-book"></span>
+            {{subject?.name}}
+          </h3>
+          <div class="item1" (click)="selectSubject(subject?.name)">Select</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->

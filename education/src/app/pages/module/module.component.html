@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<h5>{{topic}}</h5>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      Modules for you
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let subtopic of modules"
+          [routerLink]="['/course', subtopic?.name, subtopic?.grade]">
+          <h3>
+            <span class="ti-book"></span>
+            {{subtopic?.name}}
+          </h3>
+          <p>
+            <span class="ti-calendar"></span>
+            <a [routerLink]="['/book', subtopic?.name]" style="float:none;">
+              Book A Tutor
+            </a>
+          </p>
+          <a class="row" [routerLink]="['/course', subtopic?.name, subtopic?.grade]">
+            Start Learning
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!-- <app-footer></app-footer> -->

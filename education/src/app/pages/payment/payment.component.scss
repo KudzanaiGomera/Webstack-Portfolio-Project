@@ -1,0 +1,170 @@
+.heading-primary {
+  font-size: 2rem;
+  text-align: center;
+  margin: 50px 0;
+}
+
+.plan-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+ol,
+ul {
+  padding-left: 0rem !important;
+}
+
+.plan-section .plan {
+  width: 350px;
+  height: 450px;
+  text-align: center;
+  padding: 30px 30px;
+  margin-right: 10px;
+  margin-bottom: 80px;
+  border-radius: 5px;
+  box-shadow: 0 0.6rem 1.6rem #b3b5c6;
+}
+
+@media screen and (max-width: 600px) {
+  .plan-section .plan {
+    width: 300px;
+    height: 450px;
+    text-align: center;
+    padding: 30px 30px;
+    margin-right: 10px;
+    margin-bottom: 80px;
+    border-radius: 5px;
+    box-shadow: 0 0.6rem 1.6rem #b3b5c6;
+  }
+
+  .buy-now {
+    margin-top: 20px !important;
+    background-color: #e0182d !important;
+    color: #fff !important;
+    border: 1px solid #e0182d !important;
+
+    img {
+      margin-left: 20px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.plan-section .plan .plan-price {
+  font-size: 4rem;
+}
+
+.plan-section .plan .dollar {
+  font-size: 2rem;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.plan-section .plan .plan-features .plan-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #b3b5c6;
+}
+
+.plan-section .plan .btn {
+  display: block;
+  background-color: var(--main-color);
+  padding: 10px;
+  margin-top: 20px;
+  color: #f6f6fe;
+  border-radius: 5px;
+}
+
+.plan-section .plan .btn:hover {
+  background-color: #f6f6fe;
+  color: #494c5f;
+  border: 1px solid var(--main-color);
+  font-weight: 900;
+}
+
+.plan-section .plan .btn-blue {
+  background-color: #f6f6fe;
+  color: var(--main-color);
+}
+
+.plan-section .plan .btn-blue:hover {
+  background-color: var(--main-color);
+  color: #f6f6fe;
+  border: 1px solid #f6f6fe;
+}
+
+.plan-section .basic {
+  background-color: #f6f6f6;
+  border-radius: 5px;
+}
+
+.plan-section .pro {
+  background-color: var(--main-color);
+  color: #f6f6fe;
+  height: 400px;
+}
+
+.plan-section .master {
+  background-color: #f6f6f6;
+}
+
+.buy-now {
+  margin-top: 50px !important;
+  background-color: #e0182d !important;
+  color: #fff !important;
+  border: 1px solid #e0182d !important;
+
+  img {
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.instant-eft {
+  margin-top: 50px !important;
+  background-color: #041b2b !important;
+  color: #fff !important;
+  border: 1px solid #041b2b !important;
+
+  img {
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.instant-eft:hover {
+  background-color: transparent !important;
+  color: #041b2b !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  border: 1px solid #041b2b !important;
+}
+
+.instant-eft :focus {
+  outline: none !important;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+.buy-now:hover {
+  background-color: transparent !important;
+  color: #e0182d !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  border: 1px solid #e0182d !important;
+}
+
+.buy-now:focus {
+  outline: none !important;
+}
+
+*:focus {
+  outline: none !important;
+}

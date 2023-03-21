@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+
+<h2 class="heading-primary" style="color: #6400e4;">Package: Flourish</h2>
+<div class="plan-section" #content>
+
+  <div class="plan master" [hidden]="!error">
+    <h3 class="plan-price"><span class="dollar">R</span>1250</h3>
+    <ul class="plan-features">
+      <li class="plan-item">Subject: <span style="color: #6400e4; font-size: 20px">{{subject}}</span></li>
+      <li class="plan-item">Topic: <span style="color: #6400e4; font-size: 18px">{{topic}}</span></li>
+      <li class="plan-item">4 free 1 on 1 online session</li>
+      <li class="plan-item">Q&A 24/7 support with any tutor</li>
+      <li class="plan-item">Free exams preparation resources</li>
+    </ul>
+
+    <div *ngFor="let content of content_id">
+      <a (click)="success(content?.id)" class="btn buy-now"
+        href="https://sandbox.payfast.co.za/eng/process?cmd=_paynow&receiver=10026088&item_name=Eworksa&email_confirmation=1&confirmation_address=kudzanai.gomera@hotmail.com&item_description=4 free 1 on 1 online tutoring.
+      Unlimited Access to Topic Content.
+      24hours per day of tutoring support.
+      &return_url=https://sgcholdings.co.za/success.php?id={{content?.id}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=5&type=subscription.free-trial&next_run={{this.today}}&subscription_notify_email=true&subscription_notify_webhook=true&subscription_notify_buyer=true&subscription_type=1&recurring_amount=1250&cycles=6&frequency=3">
+        Get Your FREE 7 Day Trial
+        <img src="assets/logos/payfast.png" alt="No payfast">
+      </a>
+
+      <!-- <a (click)="success(content?.id)" class="btn buy-now"
+        href="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=19434569&item_name=Eworksa&email_confirmation=1&confirmation_address=junior@katangatech.co.za&item_description=4 free 1 on 1 online tutoring.
+      One Free Topic Content.
+      24hours per day of tutoring support.
+      &return_url=https://sgcholdings.co.za/success.php?id={{content?.id}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=0&type=subscription.free-trial&next_run={{this.today}}&subscription_notify_email=true&subscription_notify_webhook=true&subscription_notify_buyer=true&subscription_type=1&recurring_amount=1250&cycles=6&frequency=3">
+        Get Your FREE 7 Day Trial
+        <img src="assets/logos/payfast.png" alt="No payfast">
+      </a> -->
+    </div>
+  </div>
+
+  <div class="plan master" [hidden]="error">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>1250</h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #6400e4; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #6400e4; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">4 free 1 on 1 online session</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div *ngFor="let content of content_id">
+        <a (click)="success2(content?.id)" class="btn buy-now"
+          href="https://sandbox.payfast.co.za/eng/process?cmd=_paynow&receiver=10026088&item_name=Eworksa&email_confirmation=1&confirmation_address=kudzanai.gomera@hotmail.com&item_description=4 free 1 on 1 online tutoring.
+        Unlimited Access to Topic Content.
+        24hours per day of tutoring support.
+        &return_url=https://sgcholdings.co.za/success.php?id={{content?.id}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=1250&subscription_notify_email=true&subscription_notify_webhook=true&subscription_notify_buyer=true&subscription_type=1&recurring_amount=1250&cycles=6&frequency=3">
+          Subscribe Now
+          <img src="assets/logos/payfast.png" alt="No payfast">
+        </a>
+
+        <!-- <a (click)="success2(content?.id)" class="btn buy-now"
+          href="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=19434569&item_name=Eworksa&email_confirmation=1&confirmation_address=junior@katangatech.co.za&item_description=4 free 1 on 1 online tutoring.
+        One Free Topic Content.
+        24hours per day of tutoring support.
+        &return_url=https://sgcholdings.co.za/success.php?id={{content?.id}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=1250&subscription_notify_email=true&subscription_notify_webhook=true&subscription_notify_buyer=true&subscription_type=1&recurring_amount=1250&cycles=6&frequency=3">
+          Subscribe Now
+          <img src="assets/logos/payfast.png" alt="No payfast">
+        </a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="plan master">
+    <div>
+      <h3 class="plan-price"><span class="dollar">Instant EFT</span></h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #6400e4; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #6400e4; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">4 free 1 on 1 online session</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div *ngFor="let content of content_id">
+        <a [routerLink]="['/subject-eft', content.id, subject, topic, grade]" class="btn instant-eft">
+          Pay Now
+          <img src="assets/logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

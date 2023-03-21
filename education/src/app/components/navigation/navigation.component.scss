@@ -1,0 +1,127 @@
+h2 {
+  margin-bottom: 0.5rem;
+  padding-left: 20px !important;
+  font-weight: 400;
+  line-height: 0.5;
+  text-decoration: none;
+  color: #ffffff !important;
+}
+
+.bg-light {
+  background: linear-gradient(
+    90.32deg,
+    #7932e8 28.37%,
+    #9b51e0 97.47%
+  ) !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+  position: relative;
+  width: 100vw;
+}
+
+.btn-default {
+  background: linear-gradient(90.32deg, #7932e8 28.37%, #9b51e0 97.47%);
+  color: #fff;
+  border-radius: 0;
+  outline: none;
+  box-shadow: 0 5px 3px rgb(0 0 0 / 12%);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.header {
+  position: relative;
+  z-index: 9;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.nav-link {
+  -webkit-transition: color 0.6s, border 0.6s;
+  transition: color 0.6s, border 0.6s;
+  font-family: Poppins, sans-serif;
+  color: #ffffff !important;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.nav-link a {
+  color: #ffffff !important;
+}
+
+.searchBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ti-shopping-cart {
+  font-size: 20px;
+}
+
+#searchQueryInput {
+  width: 80%;
+  height: 2.8rem;
+  background: #f5f5f5;
+  outline: none;
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0 3.5rem 0 1.5rem;
+  font-size: 1rem;
+}
+
+#searchQuerySubmit {
+  width: 2.5rem;
+  height: 2.8rem;
+  margin: -3.5rem;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+#searchQuerySubmit:hover {
+  cursor: pointer;
+}
+
+/* On screens that are 600px wide or less */
+@media screen and (max-width: 600px) {
+  .w--current img {
+    width: 80px;
+    height: 100%;
+  }
+
+  .nav-link {
+    display: none;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 602px) {
+  .w--current img {
+    width: 85px;
+    height: 100%;
+  }
+
+  .nav-link {
+    float: right;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  .w--current {
+    margin-left: 20px;
+  }
+
+  .w--current img {
+    width: 85px;
+    height: 100%;
+  }
+}

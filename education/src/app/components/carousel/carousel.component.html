@@ -1,0 +1,54 @@
+<!--All course -->
+<section class="container">
+  <h4 class="mylist-heading">
+    Top Courses
+  </h4>
+
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let lesson of lessons">
+      <div class="previewContainer">
+        <a [routerLink]="['/login']">
+          <div class="policy-p-card">
+            <div class="policy-img">
+              <img src="assets/images/demo.jpeg" alt="No image">
+              <div class="row">
+                <div class="column">
+                  <h2>Lesson Name</h2>
+                </div>
+              </div>
+              <p>Lesson description should be here</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</section>
+
+
+<!--New course -->
+<section class="container">
+  <h4 class="mylist-heading">
+    Explorer new Courses
+  </h4>
+
+  <owl-carousel-o [options]=" PeopleViewing">
+    <ng-template carouselSlide *ngFor="let lesson of lessons">
+      <div class="previewContainer">
+        <a [routerLink]="['/login']">
+          <div class="policy-p-card">
+            <div class="policy-img">
+              <img src="assets/images/second.jpg" alt="No image">
+              <div class="row">
+                <div class="column">
+                  <h2>Lesson Name</h2>
+                </div>
+              </div>
+              <p>Lesson description should be here</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</section>

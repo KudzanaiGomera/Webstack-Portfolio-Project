@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+
+  <a [routerLink]="['']" aria-current="page" class="w-nav-brand w--current" aria-label="home"
+    style="text-decoration: none;">
+    <!-- <img src="assets/Logos/logo.png" height="100" alt="" class="image"> -->
+    <h2>Extreme Focus</h2>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" S>
+    <li class="nav-item">
+      <a [routerLink]="['']" class="nav-link">
+        Catalog
+        <span class="sr-only"></span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="https://sgcholdings.co.za/Extreme_Focus/admin/" class="nav-link">
+        Instructor
+        <span class="sr-only"></span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a [routerLink]="['/cart']" class="nav-link">
+        <span class="ti-shopping-cart"></span>
+      </a>
+    </li>
+
+    <li class="nav-item" style="margin-right: 6px;">
+      <a [routerLink]="['/login']" class="nav-link btn btn-default">
+        Log in
+        <span class="sr-only"></span>
+      </a>
+    </li>
+
+    <li class="nav-item" style="margin-right: 25px;">
+      <a [routerLink]="['/signup']" class="nav-link btn btn-default"
+        style="background: white !important; color: #7932e8 !important;">
+        Sign up
+        <span class="sr-only"></span>
+      </a>
+    </li>
+  </div>
+</nav>

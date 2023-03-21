@@ -1,0 +1,159 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid" *ngFor="let video of video">
+  <div class="row">
+    <div class="col-sm-3 col-md-6 col-lg-8">
+
+      <div class="main-video-container">
+        <video playsinline controls onended="showUpNext()" class="video" id="video" *ngIf="video.video !== '/lessons/'"
+          controlsList="nodownload">
+          <source src="https://sgcholdings.co.za/Backend/{{ video.video }}" type="video/mp4" />
+        </video>
+      </div>
+
+      <div style="width: 100%; height: 480px;" *ngIf="video.document !== '/documents/'">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Attached to this lecture is a pdf lesson.</h5>
+            <p class="card-text">Remember these are copyrighted materials. Please do not share with others. Thank you!
+            </p>
+            <a class="btn btn-primary" href="{{'https://sgcholdings.co.za/Backend/' + video.document}}#toolbar=0"
+              target="_blank">
+              View Lesson
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm-3 col-md-6 col-lg-4 status">
+      <div>
+        <div id="table">
+
+          <div [hidden]="done2">
+            <!---Show these buttons if it is a video-->
+            <div class="buttons" *ngIf="video.video !== '/lessons/'">
+              <!-- this one is a place holder just to make the UI nice -->
+              <div class="mybuttons" [hidden]="!done">
+                <button class="btn btn-secondary" id="quizBtn" disabled>
+                  <span class="ti-angle-left"></span>
+                  PREV
+                </button>
+              </div>
+
+              <!-- Only work if there is a previous content -->
+              <div class="mybuttons" *ngFor="let prev of previousVideo">
+                <button [routerLink]="['/watch', prev.previous]" class="btn btn-secondary" id="quizBtn" disabled>
+                  <span class="ti-angle-left"></span>
+                  PREV
+                </button>
+              </div>
+
+              <div class="divider"></div>
+              <!-- Only work if there is a next content -->
+              <div class="mybuttons" *ngFor="let i of upNextVideo">
+                <button [routerLink]="['/watch', i.upNext]" class="btn btn-secondary next" id="bookBtn" disabled>
+                  NEXT
+                  <span class="ti-angle-right"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div [hidden]="!done2">
+            <!---Show these buttons if it is a video-->
+            <div class="buttons" *ngIf="video.video !== '/lessons/'">
+              <!-- Only show up if all content is done -->
+              <div class="mybuttons" *ngFor="let detail of details">
+                <button [routerLink]="['/book', detail?.subtopic]" class="btn btn-secondary next" id="bookBtn" disabled>
+                  <span class="ti-angle-left"></span>
+                  BOOK
+                </button>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="mybuttons" *ngFor="let detail of details">
+                <button type="button" class="btn btn-secondary next" id="bookBtn" (click)="quiz(detail.lesson)"
+                  disabled>
+                  QUIZ
+                  <span class="ti-angle-right"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <!---Show these buttons if it is a pdf lesson-->
+          <div [hidden]="done2">
+            <div class="buttons" *ngIf="video.document !== '/documents/'">
+              <!-- this one is a place holder just to make the UI nice -->
+              <div class="mybuttons" [hidden]="!done">
+                <button class="btn btn-secondary" id="quizBtn" disabled>
+                  <span class="ti-angle-left"></span>
+                  PREV
+                </button>
+              </div>
+
+              <div class="mybuttons" *ngFor="let prev of previousVideo">
+                <button [routerLink]="['/watch', prev.previous]" class="btn btn-secondary" id="quizBtn">
+                  <span class="ti-angle-left"></span>
+                  PREV
+                </button>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="mybuttons" *ngFor="let i of upNextVideo">
+                <button [routerLink]="['/watch', i.upNext]" class="btn btn-secondary next" id="bookBtn">
+                  NEXT
+                  <span class="ti-angle-right"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div [hidden]="!done2">
+            <!---Show these buttons if it is a video-->
+            <div class="buttons" *ngIf="video.document !== '/documents/'">
+              <!-- Only show up if all content is done -->
+              <div class="mybuttons" *ngFor="let detail of details">
+                <button [routerLink]="['/book', detail?.subtopic]" class="btn btn-secondary next" id="bookBtn" disabled>
+                  <span class="ti-angle-left"></span>
+                  BOOK
+                </button>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="mybuttons" *ngFor="let detail of details">
+                <button type="button" class="btn btn-secondary next" id="bookBtn" (click)="quiz(detail.lesson)"
+                  disabled>
+                  QUIZ
+                  <span class="ti-angle-right"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="myrow">
+            <div class="name">
+              <h6>
+                <span class="ti-check-box"></span>
+                {{video.name}}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

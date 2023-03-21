@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <h2 class="heading">Booking History</h2>
+  <div class="row">
+    <!-- Editable table -->
+    <div class="card">
+      <div class="th-card-body">
+        <div id="table" class="table-editable">
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <thead>
+              <tr>
+                <th class="text-center">Subject</th>
+                <th class="text-center">Topic</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Time</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Booking</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- This is our clonable table line -->
+              <tr *ngFor="let booking of mybooking">
+                <td class="pt-3-half">{{booking?.subject}}</td>
+                <td class="pt-3-half">{{booking?.topic}}</td>
+                <td class="pt-3-half">{{booking?.date}}</td>
+                <td class="pt-3-half">{{booking?.time}}</td>
+                <td class="pt-3-half">{{booking?.status}}</td>
+                <td class="pt-3-half view" [routerLink]="['/book', booking?.topic]">View
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <!-- Editable table -->
+
+  </div>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

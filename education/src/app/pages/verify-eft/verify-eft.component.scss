@@ -1,0 +1,107 @@
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+.container {
+  display: block;
+  margin: 0 auto !important;
+  /* makes it centered */
+  max-width: 580px;
+  padding: 10px;
+  width: 580px;
+}
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+  max-width: 580px;
+  padding: 10px;
+}
+
+.main {
+  background: #7a8943;
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 200px;
+}
+.wrapper {
+  box-sizing: border-box;
+  padding: 20px;
+}
+.footer {
+  clear: both;
+  padding-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+.footer td,
+.footer p,
+.footer span,
+.footer a {
+  color: #999999;
+  font-size: 12px;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+h1 {
+  font-size: 35px;
+  font-weight: 300;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 602px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+    margin-bottom: 30px;
+    margin-left: 40px;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+    margin-bottom: 30px;
+    margin-left: 40px;
+  }
+}
+
+.btn-secondary {
+  text-decoration: none;
+  border-color: white !important;
+  background: white !important;
+  color: #7a8943 !important;
+  font-size: 17px;
+}

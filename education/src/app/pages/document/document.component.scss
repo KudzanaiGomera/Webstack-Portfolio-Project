@@ -1,0 +1,140 @@
+.container-fluid {
+  height: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.videoControls button {
+  display: block;
+  background: linear-gradient(90deg, #ac2e60 0%, #ef7a1e 100%);
+  color: #fff;
+  border: none;
+  min-width: 150px;
+  padding: 0 10px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 18px;
+  border-radius: 4px;
+  margin-bottom: 55px;
+  margin-right: 5px;
+}
+
+.videoControls button:hover,
+.videoControls button:focus {
+  background-color: #e6e6e6;
+  color: #000;
+}
+
+.row {
+  display: flex;
+}
+
+.status {
+  margin-top: 5px;
+}
+
+.name h4 {
+  margin-top: 10px;
+}
+
+#table {
+  box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.myrow {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #afafaf;
+}
+
+.name {
+  padding-left: 31px;
+  position: relative;
+  display: inline-block;
+  width: 75%;
+  line-height: 45px;
+}
+
+.value {
+  position: relative;
+  display: inline-block;
+  width: 55%;
+  line-height: 45px;
+}
+
+.videoControls {
+  position: absolute;
+  width: 100% !important;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.videoControls h1 {
+  color: #fff;
+}
+
+.container .video {
+  width: 100%;
+  height: 100%;
+  margin: 0px 5px;
+  border-radius: 5px;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.upNext {
+  height: 50vh;
+  left: 30%;
+}
+
+.upNextContainer button {
+  padding: 0;
+}
+
+.upNextContainer h2,
+.upNextContainer h3 {
+  color: #fff;
+}
+
+.watchNav {
+  z-index: 2;
+}
+
+button {
+  width: 100%;
+  border-radius: 0 !important;
+}
+
+.mybuttons {
+  width: 50%;
+  border-radius: 0 !important;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.divider {
+  width: 80px;
+  height: auto;
+  display: inline-block;
+}
+
+#table {
+  padding-top: 10px;
+}

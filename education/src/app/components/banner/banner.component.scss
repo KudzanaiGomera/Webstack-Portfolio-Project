@@ -1,0 +1,99 @@
+.banner-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  justify-content: center;
+  .banner-container {
+    align-items: center;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-shrink: 1;
+    display: flex;
+    position: relative;
+    flex-basis: 0px;
+    justify-content: center;
+    .banner-img-wrapper {
+      overflow-y: hidden;
+      overflow-x: hidden;
+      position: relative;
+      width: 100vw;
+      background-repeat: no-repeat;
+      background-size: cover;
+      object-fit: contain;
+      object-position: initial;
+      .banner-padding {
+        padding-top: 24.296%;
+        @media only screen and (max-width: 768px) {
+          padding-top: 25.296%;
+        }
+        overflow-y: hidden;
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+        background-color: #ccc;
+        .banner-abs {
+          padding-left: 0;
+          flex-grow: 1;
+          flex-direction: column;
+          margin-right: 0;
+          z-index: 0;
+          flex-shrink: 1;
+          align-items: stretch;
+          margin-left: 0;
+          min-width: 0;
+          bottom: 0;
+          justify-content: space-between;
+          display: flex;
+          left: 0;
+          padding-top: 0;
+          top: 0;
+          right: 0;
+          margin-bottom: 0;
+          position: absolute;
+          padding-bottom: 0;
+          min-height: 0;
+          .banner-abs-main {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding-top: 25%;
+            @media only screen and (max-width: 768px) {
+              padding-top: 25%;
+            }
+            width: 100vw;
+            height: 0;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            .banner-inner-wrapper {
+              position: absolute;
+              padding-left: 0;
+              right: 0;
+              top: 0;
+              left: 0;
+              bottom: 0;
+              flex-grow: 1;
+              flex-direction: column;
+              margin-right: 0;
+              flex-shrink: 1;
+              align-items: stretch;
+              justify-content: space-between;
+              display: flex;
+            }
+            .CoverPhoto {
+              position: absolute;
+              right: 0;
+              top: 0;
+              left: 0;
+              bottom: 0;
+              width: 100vw;
+            }
+          }
+        }
+      }
+    }
+  }
+}

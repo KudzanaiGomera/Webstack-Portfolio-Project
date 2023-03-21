@@ -1,0 +1,453 @@
+.contact {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(../../../assets/contact.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* On screens that are 600px wide or less */
+@media screen and (max-width: 600px) {
+  .logo img {
+    width: 50px;
+    height: 100%;
+  }
+
+  .header {
+    padding: 10px 25px;
+    position: relative;
+    z-index: 9;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .wrapper::after {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .login-box-outer {
+    width: 300px;
+    margin-top: 50px;
+    padding: 40px;
+    position: relative;
+    z-index: 99;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    box-sizing: border-box;
+  }
+
+  .login-box-outer h1 {
+    font-size: 22px;
+    color: #fff;
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+
+  .login-box-outer input {
+    height: 30px;
+    width: 100%;
+    border-radius: 3px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+
+  .login-box-outer textarea {
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+
+  .input-wrap {
+    margin-bottom: 25px;
+  }
+
+  .login-box-outer input::placeholder,
+  .login-box-outer input::-webkit-placeholder,
+  .login-box-outer textarea::placeholder,
+  .login-box-outer textarea::-webkit-placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none !important;
+  }
+
+  .input-wrap button {
+    height: 30px;
+    width: 100%;
+    background: var(--main-color);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .remember-help {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 11px;
+  }
+
+  .remember-help input {
+    width: 12px;
+    height: 12px;
+  }
+
+  .remember {
+    display: flex;
+    align-items: center;
+  }
+
+  .new-to-izon p {
+    color: #8a8686;
+    font-size: 12px;
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+
+  .new-to-izon p a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .capture p {
+    color: #8a8686;
+    font-size: 11px;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .capture p a {
+    color: #0071eb;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .login-footer {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 602px) {
+  .logo img {
+    width: 60px;
+    height: 100%;
+  }
+
+  .header {
+    padding: 15px 30px;
+    position: relative;
+    z-index: 9;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100vh;
+    // background-image: url(../../../assets/contact.jpeg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .wrapper::after {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .login-box-outer {
+    max-width: 450px;
+    padding: 60px;
+    position: relative;
+    z-index: 99;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    box-sizing: border-box;
+  }
+
+  .login-box-outer h1 {
+    font-size: 28px;
+    color: #fff;
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+
+  .login-box-outer input{
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+
+  .login-box-outer textarea {
+    height: 80px;
+    width: 100%;
+    border-radius: 3px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+
+  .input-wrap {
+    margin-bottom: 25px;
+  }
+
+  .login-box-outer input::placeholder,
+  .login-box-outer input::-webkit-placeholder,
+  .login-box-outer textarea::placeholder,
+  .login-box-outer textarea::-webkit-placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none !important;
+  }
+
+  .input-wrap button {
+    height: 50px;
+    width: 100%;
+    background: var(--main-color);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .remember-help {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  .remember-help input {
+    width: 14px;
+    height: 14px;
+  }
+
+  .remember {
+    display: flex;
+    align-items: center;
+  }
+
+  .new-to-izon p {
+    color: #8a8686;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+
+  .new-to-izon p a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .capture p {
+    color: #8a8686;
+    font-size: 13px;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .capture p a {
+    color: #0071eb;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .login-footer {
+    margin-top: 30px;
+    margin-bottom: 70px;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  .logo img {
+    width: 80px;
+    height: 100%;
+  }
+
+  .header {
+    padding: 20px 50px;
+    position: relative;
+    z-index: 9;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100vh;
+    // background-image: url(../../../assets/contact.jpeg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .wrapper::after {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .login-box-outer {
+    max-width: 450px;
+    padding: 60px;
+    position: relative;
+    z-index: 99;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    box-sizing: border-box;
+  }
+
+  .login-box-outer h1 {
+    font-size: 32px;
+    color: #fff;
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+
+  .login-box-outer input {
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+
+  .input-wrap {
+    margin-bottom: 25px;
+  }
+
+  .login-box-outer input::placeholder,
+  .login-box-outer input::-webkit-placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
+  input:focus {
+    outline: none !important;
+  }
+
+  .input-wrap button {
+    height: 50px;
+    width: 100%;
+    background: var(--main-color);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .remember-help {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  .remember-help input {
+    width: 15px;
+    height: 15px;
+  }
+
+  .remember {
+    display: flex;
+    align-items: center;
+  }
+
+  .new-to-izon p {
+    color: #8a8686;
+    font-size: 15px;
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+
+  .new-to-izon p a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .capture p {
+    color: #8a8686;
+    font-size: 13px;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .capture p a {
+    color: #0071eb;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .login-footer {
+    margin-top: 30px;
+    margin-bottom: 70px;
+  }
+}

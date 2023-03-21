@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<h5>{{module}}</h5>
+
+<div class="body">
+
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      Lessons for you
+    </h4>
+
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let lesson of lessons">
+        <div class="previewContainer">
+          <a [routerLink]="['/course-modal', lesson?.subtopic, lesson?.grade, lesson?.name]">
+            <div class="policy-p-card">
+              <div class="policy-img">
+                <img src="https://sgcholdings.co.za/Backend/{{lesson.image}}" alt="No image">
+                <h2>{{lesson?.name}}</h2>
+                <p>{{lesson?.description}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </section>
+
+
+  <!-- <section class="container">
+    <h4 class="mylist-heading">
+      People are Viewing
+    </h4>
+
+    <owl-carousel-o [options]="PeopleViewing">
+      <ng-template carouselSlide *ngFor="let lesson of lessons5"> -->
+  <!-- should route to subject but at the moment it will got to home since there will be only one subject. -->
+  <!-- <a [routerLink]="['/subject']">
+          <div class="policy-p-card">
+            <div class="policy-img">
+              <img src="https://sgcholdings.co.za/Backend/{{lesson.image}}" alt="No image">
+              <h2>{{lesson?.subtopic}}</h2>
+              <p>{{lesson?.description}}</p>
+            </div>
+          </div>
+        </a>
+      </ng-template>
+    </owl-carousel-o>
+
+  </section> -->
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!-- <app-footer></app-footer> -->

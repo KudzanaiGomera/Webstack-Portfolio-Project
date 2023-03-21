@@ -1,0 +1,29 @@
+.footer {
+  bottom: 0px;
+  position: relative;
+  width: 100vw;
+  height: auto;
+  min-height: 50px;
+  display: flex;
+  background: linear-gradient(
+    90.32deg,
+    #7932e8 28.37%,
+    #9b51e0 97.47%
+  ) !important;
+}
+
+p {
+  color: var(--white);
+  font-size: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  line-height: 14px;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 13px;
+}
+
+a {
+  color: var(--white);
+}

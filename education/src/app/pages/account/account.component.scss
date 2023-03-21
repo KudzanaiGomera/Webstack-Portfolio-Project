@@ -1,0 +1,79 @@
+h5 {
+    padding: 30px;
+    margin-left: 30px;
+    font-weight: 500;
+    font-size: 2.2rem;
+    line-height: 1.25;
+    letter-spacing: -0.05rem;
+    color: var(--main-header);
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    border-color: var(--main-color);
+  }
+  
+  .profile-button {
+    background: var(--main-color);
+    box-shadow: none;
+    border: none;
+  }
+  
+  .profile-button:hover {
+    background: var(--main-color);
+  }
+  
+  .profile-button:focus {
+    background: var(--main-color);
+    box-shadow: none;
+  }
+  
+  .profile-button:active {
+    background: var(--main-color);
+    box-shadow: none;
+  }
+  
+  .back:hover {
+    color: var(--main-color);
+    cursor: pointer;
+  }
+  
+  .labels {
+    font-size: 13px;
+  }
+  
+  /* Modal styles */
+  .modal .modal-dialog {
+    max-width: 400px;
+  }
+  .modal .modal-header,
+  .modal .modal-body,
+  .modal .modal-footer {
+    padding: 20px 30px;
+  }
+  .modal .modal-content {
+    border-radius: 3px;
+  }
+  .modal .modal-footer {
+    background: #ecf0f1;
+    border-radius: 0 0 3px 3px;
+  }
+  .modal .modal-title {
+    display: inline-block;
+  }
+  .modal .form-control {
+    border-radius: 2px;
+    box-shadow: none;
+    border-color: #dddddd;
+  }
+  .modal textarea.form-control {
+    resize: vertical;
+  }
+  .modal .btn {
+    border-radius: 2px;
+    min-width: 100px;
+  }
+  .modal form label {
+    font-weight: normal;
+  }
+  

@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+
+<h5>Let's start learning, {{username}}</h5>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      Topics for you
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let topic of courses" [routerLink]="['/module', topic?.topic, topic.grade]">
+          <h3>
+            <span class="ti-book"></span>
+            {{topic?.topic}}
+          </h3>
+          <a class="row" [routerLink]="['/module', topic?.topic, topic.grade]">
+            Select Module
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h4 class="mylist-heading">
+      Topics Added to Cart
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let unpaid of unPaidTopics">
+          <h3>
+            <span class="ti-shopping-cart"></span>
+            {{unpaid?.topic}}
+          </h3>
+          <div class="row">
+            <div class="column">
+              <a style="float: left; cursor: pointer;"
+                (click)="removeFromCart(unpaid?.subject, unpaid.grade, unpaid?.topic)">
+                Remove
+              </a>
+              <a (click)="checkoutTopic( unpaid?.subject, unpaid.grade, unpaid?.topic)">
+                Pay
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h4 class="mylist-heading">
+      Other {{subject}} topics
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let topic of othercourses"
+          (click)="checkoutTopic( topic?.subject, topic.grade, topic?.name)">
+          <h3>
+            <span class="ti-book"></span>
+            {{topic?.name}}
+          </h3>
+          <a class="row" (click)="checkoutTopic( topic?.subject, topic.grade, topic?.name)">
+            Purchase Topic
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!-- <app-footer></app-footer> -->

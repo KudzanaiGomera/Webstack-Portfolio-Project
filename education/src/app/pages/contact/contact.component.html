@@ -1,0 +1,59 @@
+<app-navigation></app-navigation>
+
+<!----CONTACT SECTION-->
+
+<section class="contact">
+  <div class="wrapper">
+    <!-------header start here-->
+    <div class="header">
+      <div class="header-inner">
+        <div class="logo">
+
+        </div>
+      </div>
+    </div>
+    <!---------header end here-->
+
+    <!-------login box-->
+    <div class="login-box-outer" style="margin-top: 90px;">
+      <div class="login-box-inner">
+        <h1>Contact Us</h1>
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="alert alert-success" [hidden]="!success">
+            {{success}}
+          </div>
+          <div class="input-wrap">
+            <input type="name" name="name" placeholder="Name" [(ngModel)]="form.name" required>
+          </div>
+          <div class="input-wrap">
+            <input type="mobile" name="mobile" placeholder="cell phone" [(ngModel)]="form.number" required>
+          </div>
+          <div class="input-wrap">
+            <input type="text" name="email" placeholder="Email" [(ngModel)]="form.email" required>
+          </div>
+          <div class="input-wrap">
+            <textarea type="text" name="password" placeholder="Type your message" [(ngModel)]="form.message"
+              required></textarea>
+          </div>
+          <div class="input-wrap">
+            <button [disabled]="!contactForm.valid">Submit</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <!---------login box end here-->
+  </div>
+</section>
+
+<!------END CONTACT-->
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!------START FOOTER-->
+
+<app-footer></app-footer>
+
+<!------END FOOTER-->

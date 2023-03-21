@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container" *ngFor="let detail of details">
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course2-col">
+          <h5>{{lesson}}</h5>
+          <h6>{{numberofContent}} Content</h6>
+          <h6>About this Learning Plan</h6>
+          <p>
+            This series of micro learning videos serve as a guide for understading <span
+              style="text-transform: capitalize;">{{detail?.name}}</span>.
+          </p>
+          <p>Description: {{detail?.name}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="mylist-heading">
+      Content for you
+    </h4>
+
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let content of contents" [routerLink]="['/watch', content?.id]">
+          <h3>
+            <span class="ti-video-clapper"></span>
+            {{content?.name}}
+          </h3>
+          <a [routerLink]="['/watch', content?.id]">
+            Watch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

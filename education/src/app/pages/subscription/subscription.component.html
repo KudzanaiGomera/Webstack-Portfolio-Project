@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      My Subscriptions
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let sub of subscription">
+          <span class="ti-credit-card" style="float: right; font-size: 18px;color: #142134">
+            &nbsp;1250 zar/month
+          </span>
+          <h4>
+            {{sub?.subject}}
+          </h4>
+          <h6 style="font-size: 14px !important;">
+            Free trial end:
+            &nbsp;
+            <span class="ti-calendar"></span>
+            &nbsp;
+            {{sub?.free_trial}}
+          </h6>
+          <h6 style="font-size: 14px !important;">
+            Billing date:
+            &nbsp;
+            <span class="ti-calendar"></span>
+            &nbsp;
+            {{sub?.billing}}
+          </h6>
+          <div class="item1" *ngIf="sub?.subscription === 'canceled'" style="color: red">Cancelled</div>
+          <div class="item1" *ngIf="sub?.subscription === 'active'" style="color: green">Active</div>
+          <div class="item1" style="float: right;" (click)="cancel(sub?.subject)">Cancel</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

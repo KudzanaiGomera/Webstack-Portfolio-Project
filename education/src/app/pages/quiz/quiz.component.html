@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<div>
+  <div class="alert" [hidden]="quiz">
+    {{done}}
+  </div>
+  <div>
+    <div class="container">
+      <div id="quiz" class="justify-center flex-column">
+
+        <!-- <div class="alert">
+          {{ message }}
+        </div> -->
+
+        <div class="alert">
+        </div>
+
+        <div class="upnext" [hidden]="!error" *ngIf="question === undefined">
+
+          <!-- <div>
+            <button [routerLink]="['/watch', i.upNext]" *ngIf="question === undefined">
+              Next Lesson
+            </button>
+          </div> -->
+
+          <p [hidden]="!score" class="score">
+            Marks: ( {{score }} out of {{ quizTotal }} )
+            <span class="percentage">{{percentage}}%</span>
+          </p>
+
+          <div style="display:flex" *ngFor="let detail of details">
+            <!-- <p style="font-size: 15px; color: #0f518e;">Lesson Quiz Completed</p> -->
+
+            <button style="margin-right: 5px;" [routerLink]="['/course', detail?.subtopic, detail.grade]"
+              (click)="resetScore()" [disabled]="fail">
+              <span class="ti-home"></span>
+              HOME
+            </button>
+
+            <div class="divider"></div>
+
+            <button style="margin-left: 5px;"
+              [routerLink]="['/course-modal',detail?.subtopic, detail?.grade, detail?.name]" (click)="resetScore()"
+              [disabled]="pass">
+              RETRY QUIZ
+              <span class="ti-back-left"></span>
+            </button>
+          </div>
+
+        </div>
+
+        <h2 id="question" *ngIf="question !== undefined">
+          Q.{{ questionNo }}) &nbsp; {{ question }}
+        </h2>
+        <div class="choice-container" *ngFor="let choice of quiz">
+          <label class="radio">
+            <input type="radio" name="choice" value="{{ choice.id }}" [(ngModel)]="form.choice" required>
+            <span class="choice-text">{{ choice.coption }}</span>
+          </label>
+        </div>
+        <div>
+          <!-- <button *ngIf="question !== undefined" (click)="onSubmit(questionNo)" [disabled]="success">
+            Submit
+          </button> -->
+          <button *ngIf="question !== undefined" (click)="onSubmit(questionNo)" [disabled]="success">
+            SUBMIT
+          </button>
+
+          <!-- <div class="divider"></div> -->
+
+          <!-- <button id="next" [routerLink]="['/quiz', next, videoid, current_video]" style="float: right;">
+            Next
+          </button> -->
+          <button *ngIf="success" [routerLink]="['/quiz', next, lesson]" style="float: right;">
+            NEXT
+            <span class="ti-angle-right"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!-- <app-footer></app-footer> -->

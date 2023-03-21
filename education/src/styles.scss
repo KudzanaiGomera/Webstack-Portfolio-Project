@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #ffffff;
+  --main-color: #6400e4;
+  --purple-dark: #7932e8;
+  --purple-light: #9b51e0;
+  --box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.34);
+  --hover-shadow: 0px 4px 4px 0px rgba(3, 3, 3, 0.561);
+  --nav-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  --light-black: #141c3a;
+  --black: #000;
+}
+
+body {
+  margin: 0;
+  font-family: udemy sans, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
+    Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+    segoe ui symbol;
+}
+
+/*** navbar ***/
+.social-icons div img {
+  height: 38px;
+  width: 38px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+li {
+  list-style-type: none;
+}
+
+img {
+  cursor: pointer;
+}
+
+/*profile pic on hover*/
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 255);
+  min-width: 260px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 20px;
+  z-index: 1;
+  right: 15%;
+}
+
+/* hide menu */
+.menu {
+  display: inline;
+  clear: both;
+  margin: 10px 0 0 0;
+}
+.menu li {
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+.menu li a {
+  color: #000;
+  text-decoration: none;
+}
+
+.menu li a span {
+  padding: 5px;
+}
+
+.menu li a span:hover {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+.dropdown-content a {
+  text-transform: capitalize;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* On screens that are 600px wide or less */
+@media screen and (max-width: 600px) {
+  .dropdown {
+    position: relative;
+    display: block;
+    margin-right: 10px;
+    float: right !important;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 602px) {
+  .dropdown {
+    position: relative;
+    display: block;
+    margin-right: 10px;
+    float: right !important;
+  }
+}
+
+.container .owl-next,
+.container .owl-prev {
+  background: linear-gradient(
+    90.32deg,
+    #7932e8 28.37%,
+    #9b51e0 97.47%
+  ) !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  height: 60px !important;
+  width: 60px !important;
+  position: absolute !important;
+  top: 50%;
+  transition: 0.3s all ease;
+}
+
+.container .owl-next {
+  right: -58px;
+  transform: translate(-50%, -50%);
+}
+
+.container .owl-prev {
+  left: -8px;
+  transform: translate(-50%, -50%);
+}
+
+.container .owl-next i,
+.container .owl-prev i {
+  font-size: 1.4rem !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 600px) {
+  .container .owl-next,
+  .container .owl-prev {
+    display: none !important;
+  }
+}

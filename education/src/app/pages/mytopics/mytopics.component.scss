@@ -1,0 +1,120 @@
+h5 {
+  padding: 30px;
+  margin-left: 30px;
+  font-weight: 500;
+  font-size: 2.2rem;
+  line-height: 1.25;
+  letter-spacing: -0.05rem;
+}
+
+.body {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /***slider imgs */
+
+  .container {
+    max-width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  /**** codeacademy style */
+
+  .course {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+  }
+
+  p {
+    color: --var(--main-color);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+  }
+
+  .row {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a {
+    text-decoration: none;
+    float: right;
+    padding: 10px;
+    color: var(--main-color);
+    font-weight: 500;
+  }
+
+  a:hover {
+    text-decoration: none;
+    float: right;
+    padding: 10px;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .course-col {
+    flex-basis: 31%;
+    background: #fff;
+    border-radius: 1px;
+    color: var(--color-text);
+    border: 1px solid var(--main-color);
+    border-color: var(--main-color);
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5;
+    cursor: pointer;
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+    line-height: 1.1;
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  span {
+    color: var(--main-color);
+  }
+
+  .course-col:hover {
+    box-shadow: 0 2px 4px rgb(54 76 25 / 100%), 0 2px 4px rgb(54 76 25 / 100%);
+  }
+
+  @media (max-width: 700px) {
+    .row {
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      float: right;
+      padding: 5px;
+      color: var(--main-color);
+      font-weight: 300;
+    }
+
+    a:hover {
+      text-decoration: none;
+      float: right;
+      padding: 5px;
+      color: var(--color-text);
+      font-weight: 300;
+    }
+  }
+}

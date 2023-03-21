@@ -1,0 +1,153 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <div class="row">
+
+    <div class="col-sm-3 col-md-6 col-lg-8">
+
+      <div class="previewContainer">
+        <div class="row">
+          <div class="course-col">
+            <p>
+              <a [routerLink]="['/book']" style="float:none;">
+                <span class="ti-calendar"></span>
+                Get more from Extreme Focus -
+              </a>
+              Feeling lost, and need Tutor's help in understading a topic book a tutor for better understading
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="previewContainer">
+        <div class="row">
+          <div class="alert alert-danger" [hidden]="!error" style="flex-basis: 95%;">
+            {{error}}
+          </div>
+          <a href="#book" class="bookbtn" data-toggle="modal" data-backdrop="false">
+            Book A Tutor
+            &nbsp;
+            <span style="color: #fff" class="ti-calendar"></span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-3 col-md-6 col-lg-4 status">
+      <div>
+        <div id="table">
+          <h3>Booking Status</h3>
+
+          <div class="myrow">
+            <span class="pending"></span>
+            <p>{{topic}}</p>
+          </div>
+
+          <div class="myrow" *ngFor="let stat of booking">
+            <span class="approve">●</span>
+            {{stat.status}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Approval Modal HTML -->
+<div id="refresh" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>User Successfuly approved?</p>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-success" data-dismiss="modal" value="ok">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!---------booking modal------->
+<div id="book" class="modal fade" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <div class="modal-content" *ngIf="length < 4 || length === undefined">
+      <form #BookForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Book</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onClick="window.location.reload();">&times;</button>
+        </div>
+        <!-- <div class="alert alert-danger" [hidden]="!error">
+          {{error}}
+        </div> -->
+        <div class="alert alert-success" [hidden]="!success">
+          {{success}}
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Choose your available date</label>
+            <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="Date"
+              [(ngModel)]="form.date" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Choose your available time</label>
+            <input type="time" name="time" class="form-control" id="exampleInputPassword1" placeholder="Time"
+              [(ngModel)]="form.time" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-secondary" data-dismiss="modal" value="CANCEL">
+          <input type="submit" class="btn btn-success" value="BOOK A TUTOR" id="adduser" [disabled]="!BookForm.valid">
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-content" *ngIf="length >= 4">
+      <form #BookForm=ngForm (ngSubmit)="onBook()">
+        <div class="modal-header">
+          <h4 class="modal-title">Book</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onClick="window.location.reload();">&times;</button>
+        </div>
+        <!-- <div class="alert alert-danger" [hidden]="!error">
+          {{error}}
+        </div> -->
+        <div class="alert alert-success" [hidden]="!success">
+          {{success}}
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Choose your available date</label>
+            <input type="date" name="date" class="form-control" id="exampleInputPassword1" placeholder="Date"
+              [(ngModel)]="form.date" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Choose your available time</label>
+            <input type="time" name="time" class="form-control" id="exampleInputPassword1" placeholder="Time"
+              [(ngModel)]="form.time" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-secondary" data-dismiss="modal" value="CANCEL">
+          <input type="submit" class="btn btn-danger" value="BOOK A TUTOR" id="adduser" [disabled]="!BookForm.valid"
+            click="openModal()">
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!-- <app-footer></app-footer> -->

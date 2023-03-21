@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<h2 class="heading-primary" style="color: #7a8943;">Book A Tutor</h2>
+<div class="plan-section" #content>
+  <div class="plan master">
+    <!-- <h2 class="plan-heading">Flourish</h2> -->
+    <!-- <h3 class="plan-price"><span class="dollar">R</span>225</h3> -->
+    <h3 class="plan-price"><span class="dollar">R</span>225</h3>
+    <ul class="plan-features">
+      <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+      <li class="plan-item">1 on 1 online tutoring</li>
+      <li class="plan-item">Q&A 24/7 support with any tutor</li>
+      <li class="plan-item">Free exams preparation resources</li>
+    </ul>
+    <!-- <a (click)="success()" class="btn buy-now"
+      href="https://sandbox.payfast.co.za/eng/process?cmd=_paynow&receiver=10026088&item_name=Eworksa&email_confirmation=1&confirmation_address=kudzanai.gomera@hotmail.com&item_description=4 free 1 on 1 online tutoring.
+      Unlimited Access to Topic Content.
+      24hours per day of tutoring support.
+      &return_url=https://sgcholdings.co.za/success-booking.php?email={{this.email}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=225">
+      Book A Tutor
+      <img src="assets/Logos/payfast.png" alt="No payfast">
+    </a> -->
+    <a (click)="success()" class="btn buy-now"
+      href="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=19434569&item_name=Eworksa&email_confirmation=1&confirmation_address=junior@katangatech.co.za&item_description=4 free 1 on 1 online tutoring.
+      One Free Topic Content.
+      24hours per day of tutoring support.
+      &return_url=https://sgcholdings.co.za/success-booking.php?email={{this.email}}&cancel_url=https://sgcholdings.co.za/cancel.php?token={{this.token}}&notify_url=https://sgcholdings.co.za/notify.html&amount=225">
+      Book A Tutor
+      <img src="assets/Logos/payfast.png" alt="No payfast">
+    </a>
+  </div>
+
+  <div class="plan master">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>225</h3>
+      <ul class="plan-features">
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">1 on 1 online tutoring</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div>
+        <a class="btn instant-eft" (click)="success2()">
+          Instant EFT
+          <img src="assets/Logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- start whatsapp components -->
+  <app-whatsapp></app-whatsapp>
+  <!-- end of whatsapp components -->
+
+  <app-footer></app-footer>

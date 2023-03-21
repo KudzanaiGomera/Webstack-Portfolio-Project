@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<h5>My Learning</h5>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      Subjects for you
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let course of courses"
+          [routerLink]="['/mytopics', course?.subject, course?.grade]">
+          <h3>
+            <span class="ti-book"></span>
+            {{course?.subject}}
+          </h3>
+          <a class="row" [routerLink]="['/mytopics', course?.subject, course?.grade]">
+            View Topics
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!-- <app-footer></app-footer> -->

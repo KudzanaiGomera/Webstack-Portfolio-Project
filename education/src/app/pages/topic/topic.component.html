@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      Choose A Topic You Want
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let topic of topics" (click)="checkout(topic?.name)">
+          <h3>
+            <span class="ti-book"></span>
+            {{topic?.name}}
+          </h3>
+          <div class="item1" (click)="checkout(topic?.name); "><span class="ti-shopping-cart-full"></span> Checkout
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<!-- <app-footer></app-footer> -->

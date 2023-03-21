@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-6 col-lg-8">
+      <div style="width: 100%; height: 480px;">
+        <iframe id="myframe" style="width: 90%; height: 100%" [src]="transform(videoid)">
+          {{videoid}}
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- This part will display if there is no video  trying to see if l can display a document-->
+<!-- <div [hidden]="!done2">
+  <p>Document based</p>
+</div> -->
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

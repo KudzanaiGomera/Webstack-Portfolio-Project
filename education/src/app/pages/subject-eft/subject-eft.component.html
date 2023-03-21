@@ -1,0 +1,111 @@
+<app-navbar></app-navbar>
+
+<h2 class="heading-primary" style="color: #7a8943;">Instant-EFT: Options</h2>
+<div class="plan-section" #content>
+
+  <div class="plan master">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>1250<span class="dollar"> / month</span></h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">4 free 1 on 1 online session</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div>
+        <a class="btn instant-eft" (click)="success(content?.id, 1250)">
+          Pay Now
+          <img src="assets/Logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="plan master">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>2400<span class="dollar"> / 2 months</span></h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">4 free 1 on 1 online session</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div>
+        <a class="btn instant-eft" (click)="success(content?.id, 2400)">
+          Pay Now
+          <img src="assets/Logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div> -->
+  <div class="plan master">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>3000<span class="dollar"> / 3 months</span></h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">4 free 1 on 1 online session</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div>
+        <a class="btn instant-eft" (click)="success(content?.id, 3000)">
+          Pay Now
+          <img src="assets/Logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="plan master">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>5400<span class="dollar"> / 6 months</span></h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">4 free 1 on 1 online session</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div>
+        <a class="btn instant-eft" (click)="success(content?.id, 5400)">
+          Pay Now
+          <img src="assets/Logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="plan master">
+    <div>
+      <h3 class="plan-price"><span class="dollar">R</span>10800<span class="dollar"> / year</span></h3>
+      <ul class="plan-features">
+        <li class="plan-item">Subject: <span style="color: #7a8943; font-size: 20px">{{subject}}</span></li>
+        <li class="plan-item">Topic: <span style="color: #7a8943; font-size: 18px">{{topic}}</span></li>
+        <li class="plan-item">4 free 1 on 1 online session</li>
+        <li class="plan-item">Q&A 24/7 support with any tutor</li>
+        <li class="plan-item">Free exams preparation resources</li>
+      </ul>
+
+      <div>
+        <a class="btn instant-eft" (click)="success(content?.id, 10800)">
+          Pay Now
+          <img src="assets/Logos/payfast.png" alt="No payfast">
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

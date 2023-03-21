@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      Purchase Another Subject
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let subject of subjects" (click)="selectSubject(subject?.name)">
+          <h3>
+            <span class="ti-book"></span>
+            {{subject?.name}}
+          </h3>
+          <div class="item1" (click)="selectSubject(subject?.name)">Select</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--my campiagn -->
+  <section class="container">
+    <h4 class="mylist-heading">
+      Subjects Added to Cart
+    </h4>
+    <div class="previewContainer">
+      <div class="row">
+        <div class="course-col" *ngFor="let subject of unPaidSubjects" (click)="selectSubject(subject?.subject)">
+          <h3>
+            <span class="ti-book"></span>
+            {{subject?.subject}}
+          </h3>
+          <div class="row">
+            <div class="column">
+              <a style="float: left; cursor: pointer;" (click)="removeSubjectFromCart(subject?.subject)">
+                Remove
+              </a>
+              <a (click)="selectSubject(subject?.subject)">
+                Select
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>

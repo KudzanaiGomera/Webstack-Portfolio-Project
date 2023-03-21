@@ -1,0 +1,132 @@
+h5 {
+  padding: 30px;
+  margin-left: 25px;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.25;
+  letter-spacing: -0.05rem;
+}
+
+.body {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 17px;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /***slider imgs */
+
+  .container {
+    max-width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.policy-product {
+  padding: 60px 0;
+  background: #ffff;
+}
+
+.policy-p-card {
+  background: #fff;
+  padding: 0;
+  border-radius: 4px;
+  position: relative;
+  width: 250px;
+}
+
+.policy-img {
+  width: 100%;
+  height: 200%;
+  overflow: hidden;
+}
+
+.policy-img img {
+  //width: 100%;
+  //height: 100%;
+  max-width: 240px;
+  max-height: 135px;
+  object-fit: cover;
+  border-radius: 3px;
+  // border: 1px solid var(--main-color);
+  // border-color: var(--main-color);
+}
+
+.policy-img img:hover {
+  --show: 1;
+}
+
+.policy-p-card h2 {
+  margin-top: 0.8rem;
+  color: var(--main-header);
+  text-transform: capitalize;
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 18px 0 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.policy-p-card h2:hover {
+  color: #7932e8;
+}
+
+.policy-p-card p {
+  margin-top: 0.3rem;
+  color: #1c1d1f;
+  line-height: 21px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 600px) {
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    padding: 30px;
+    margin-left: -10px !important;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.25;
+    letter-spacing: -0.05rem;
+  }
+
+  .container {
+    max-width: 100%;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  .policy-p-card {
+    background: #fff;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    width: 160px;
+  }
+
+  .policy-p-card h2 {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .policy-p-card p {
+    font-size: 12px;
+  }
+}

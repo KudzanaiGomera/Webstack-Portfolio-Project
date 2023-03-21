@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+
+<div class="main-content">
+  <main>
+    <h5>Account Settings</h5>
+
+    <div class="container rounded bg-white mt-5 mb-5" *ngFor="let pro of profile">
+      <div class="row">
+        <div class="col-md-5 border-right">
+          <form #profileForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="p-3 py-5">
+              <div class="row mt-3">
+                <div class="col-md-12" *ngFor="let user of profile">
+                  <label class="labels">Username</label>
+                  <input type="text" name="newName" class="form-control" placeholder="{{ user.name }}"
+                    [(ngModel)]="form.newName" required readonly style="cursor:not-allowed;">
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Email</label>
+                  <input type="text" name="email" class="form-control" placeholder="{{pro?.email}}"
+                    [(ngModel)]="form.email" required readonly style="cursor:not-allowed;">
+                  <p style="color: #3c763d;font-size: small;">Email verified at {{pro?.created_at}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label class="labels">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="***********"
+                    [(ngModel)]="form.password" required readonly style="cursor:not-allowed;">
+                </div>
+              </div>
+              <div class="mt-5 text-center">
+                <!-- <button class="btn btn-primary profile-button">
+                  Save Profile
+                </button> -->
+                <a href="#changeProfile" class="btn btn-primary profile-button" data-toggle="modal"
+                  style="margin-top: 20px;">
+                  Change Profile
+                  &nbsp;
+                  <span class="ti-pencil-alt"></span>
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 py-5">
+            <div class="col-md-12">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5" *ngFor="let profile of pic">
+                <img class="rounded-circle mt-5" width="150px" height="150px"
+                  src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No profile">
+                <a href="#changePicture" class="btn btn-primary profile-button" data-toggle="modal"
+                  style="margin-top: 20px;">
+                  Edit
+                  &nbsp;
+                  <span class="ti-pencil-alt"></span>
+                </a>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Change Picture Modal HTML -->
+<div id="changePicture" class="modal fade" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form #profilePicForm="ngForm" (ngSubmit)="onUpload()">
+        <div class="modal-header">
+          <h4 class="modal-title">Change Picture</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onClick="window.location.reload();">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="onFileSelected($event)"
+              required>
+          </div>
+        </div>
+        <div *ngIf="selectedFile" class="progress my-3">
+          <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+            attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }">
+            {{ progress }}%
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-primary profile-button" value="Upload Image" id="adduser"
+            [disabled]="!profilePicForm.valid">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Change Profile Modal HTML -->
+<div id="changeProfile" class="modal fade" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form #profileForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Change Username or Password</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onClick="window.location.reload();">&times;</button>
+        </div>
+        <div class="alert alert-danger" [hidden]="!error">
+          {{error}}
+        </div>
+        <div class="alert alert-success" [hidden]="!success">
+          {{success}}
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>New Username</label>
+            <input type="text" name="newName" class="form-control" [(ngModel)]="form.newName" required>
+          </div>
+          <div class="form-group">
+            <label>New Password</label>
+            <input type="password" name="password" class="form-control" [(ngModel)]="form.password" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-primary profile-button" value="Submit" id="adduser">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- start whatsapp components -->
+<app-whatsapp></app-whatsapp>
+<!-- end of whatsapp components -->
+
+<app-footer></app-footer>
