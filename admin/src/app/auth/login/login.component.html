@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <!-------header start here-->
+  <div class="header">
+    <div class="header-inner">
+    </div>
+  </div>
+  <!---------header end here-->
+
+  <!-------login box-->
+  <div class="login-box-outer">
+    <div class="logo" style="text-align: center;">
+      <!-- <img src="assets/Logot.png" alt="OFFIP"> -->
+      <h2 class="logoText">Extreme Focus</h2>
+    </div>
+    <div class="login-box-inner">
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="alert alert-danger" [hidden]="!error">
+          {{error}}
+        </div>
+        <div class="input-wrap">
+          <input type="text" name="email" placeholder="Email" [(ngModel)]="form.email" required>
+        </div>
+        <div class="input-wrap">
+          <input type="password" name="password" placeholder="Password" [(ngModel)]="form.password" required>
+        </div>
+        <div class="input-wrap">
+          <button [disabled]="!loginForm.valid">Sign in</button>
+        </div>
+        <!-- <div class="remember-help">
+          <div class="remember">
+            <span><input type="checkbox" name=""></span>
+            <span style="padding-left: 5px;">Remember me</span>
+          </div>
+          <div class="need-help">Need help?</div>
+        </div> -->
+      </form>
+    </div>
+  </div>
+  <!---------login box end here-->
+</div>

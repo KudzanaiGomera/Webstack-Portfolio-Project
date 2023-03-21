@@ -1,0 +1,217 @@
+<app-sidebar></app-sidebar>
+<div class="main-content">
+
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search"> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{user}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- <h2 class="dash-title">Creating a Quiz</h2> -->
+    <h2 class="dash-title">Create A Quiz</h2>
+    <section class="recent">
+
+      <!-- Editable table -->
+      <div class="card">
+        <div class="th-card-body">
+          <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2" style="color:black">
+              <a href="#addUser" class="text-success" data-toggle="modal">
+                <i class="fas fa-plus fa-1x" aria-hidden="true"></i>
+              </a>
+              &nbsp;Questions</span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Lesson</th>
+                  <th class="text-center">Question Number</th>
+                  <th class="text-center">Question</th>
+                  <th class="text-center">Question Answers</th>
+                  <th class="text-center">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- This is our clonable table line -->
+                <tr *ngFor="let question of questions">
+                  <td class="pt-3-half" contenteditable="true">{{question?.lesson}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{question?.question_number}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{question?.question_text}}</td>
+                  <td class="pt-3-half" contenteditable="true" style="cursor: pointer; color: #7932e8"
+                    (click)="viewChoices(question?.lesson, question?.question_number)">View</td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#deleteUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="deleteQuestion(question?.question_number, question?.lesson)">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <div class="clearfix">
+              <div class="hint-text">Showing <b>2</b> out of <b>25</b> entries</div>
+              <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Editable table -->
+
+      <!-- Add Modal HTML -->
+      <div id="addUser" class="modal fade" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #AddCourseForm=ngForm (ngSubmit)="onSubmit()">
+              <div class="modal-header">
+                <h4 class="modal-title">Add Quiz</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>
+                    <span class="ti-video-clapper"></span>
+                    &nbsp; Search or Select Lesson
+                  </label>
+                  <input list="quiz" name="selectedOption" class="form-control" [(ngModel)]="form.selectedOption"
+                    required>
+                  <datalist id="quiz">
+                    <option *ngFor="let lesson of lessons">
+                      {{lesson?.name}}
+                    </option>
+                  </datalist>
+                </div>
+                <!-- <div class="form-group">
+                  <label>Quiz Name</label>
+                  <input type="text" name="quiz_name" class="form-control" placeholder="Name Name"
+                    [(ngModel)]="form.quiz_name" required>
+                </div> -->
+                <div class="form-group">
+                  <label>Question Number</label>
+                  <input type="number" name="question_number" class="form-control" placeholder="0"
+                    [(ngModel)]="form.question_number" required>
+                </div>
+                <div class="form-group">
+                  <label>Question</label>
+                  <textarea name="question_text" class="form-control" id="exampleTextarea1" rows="4"
+                    placeholder="what is ....." [(ngModel)]="form.question_text" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Choice 1</label>
+                  <input type="text" name="choice1" class="form-control" id="exampleInputTitle" placeholder="Choice 1"
+                    [(ngModel)]="form.choice1" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Choice 2</label>
+                  <input type="text" name="choice2" class="form-control" id="exampleInputTitle" placeholder="Choice 2"
+                    [(ngModel)]="form.choice2" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Choice 3</label>
+                  <input type="text" name="choice3" class="form-control" id="exampleInputTitle" placeholder="Choice 3"
+                    [(ngModel)]="form.choice3" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Choice 4</label>
+                  <input type="text" name="choice4" class="form-control" id="exampleInputTitle" placeholder="Choice 4"
+                    [(ngModel)]="form.choice4" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Correct Choice Number</label>
+                  <input type="number" name="correct_choice" class="form-control" id="exampleInputTitle" placeholder="0"
+                    [(ngModel)]="form.correct_choice" required>
+                </div>
+              </div>
+              <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                [ngStyle]="{ width: progress + '%' }">
+                {{ progress }}%
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"
+                  onClick="window.location.reload();">
+                <input type="submit" class="btn btn-success" value="Add" id="adduser">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Modal HTML -->
+      <div id="deleteUser" class="modal fade" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Quiz Successfuly deleted</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok" id="delete">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>

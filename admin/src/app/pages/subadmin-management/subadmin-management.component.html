@@ -1,0 +1,299 @@
+<app-sidebar></app-sidebar>
+<div class="main-content" *ngIf="role === 'admin'">
+
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search"> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{user}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="dash-title">Manage Sub Admin</h2>
+
+    <section class="recent">
+
+      <!-- Editable table -->
+      <div class="card">
+        <div class="th-card-body">
+          <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2" style="color:black">
+              <a href="#addUser" class="text-success" data-toggle="modal">
+                <i class="fas fa-plus fa-1x" aria-hidden="true"></i>
+              </a>&nbsp;Add Subadmin
+            </span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Email</th>
+                  <!-- <th class="text-center">Cell Number</th> -->
+                  <th class="text-center">Role</th>
+                  <!-- <th class="text-center">Status</th>
+                  <th class="text-center">Approve</th>
+                  <th class="text-center">Disable</th>
+                  <th class="text-center">Password Reset</th> -->
+                  <th class="text-center">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- This is our clonable table line -->
+                <tr *ngFor="let subadmin of subadmins">
+                  <td class="pt-3-half" contenteditable="true">{{subadmin?.name}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{subadmin?.email}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{subadmin?.role}}</td>
+                  <!-- <td class="pt-3-half" contenteditable="true">{{user?.cellnumber}}</td> -->
+                  <!-- <td class="pt-3-half" contenteditable="true">{{user?.grade}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{user?.status}}</td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#approveUser" data-toggle="modal">
+                        <button type="button" class="btn btn-success btn-rounded btn-sm my-0"
+                          (click)="approveUser(user?.email)">
+                          <i class="material-icons" data-toggle="tooltip"><i class="fa fa-check-circle"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#disableUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="disableUser(user?.email)">
+                          <i class="material-icons" data-toggle="tooltip"><i class="fa fa-ban"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td> -->
+                  <!-- <td>
+                    <span class="table-remove">
+                      <a href="#passwordReset" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="Reset(user?.email)">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete"><i class="fa fa-unlock"
+                              style="color: #5cb85c !important;"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td> -->
+                  <td>
+                    <span class="table-remove">
+                      <a href="#deleteUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="deleteSubadmin(subadmin?.email)">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <div class="clearfix">
+              <div class="hint-text">Showing <b>2</b> out of <b>25</b> entries</div>
+              <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Editable table -->
+
+      <!-- Edit Modal HTML -->
+      <div id="addUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #AddUserForm=ngForm (ngSubmit)="onSubmit()">
+              <div class="modal-header">
+                <h4 class="modal-title">Add Subadmin</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" name="name" class="form-control" [(ngModel)]="form.name" required
+                    placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" class="form-control" [(ngModel)]="form.email" required
+                    placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label>Role</label>
+                  <input list="grade" name="grade" placeholder="Select Role" class="form-control"
+                    [(ngModel)]="form.role" required>
+                  <datalist id="grade">
+                    <option>admin</option>
+                    <option>subadmin</option>
+                  </datalist>
+                </div>
+
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" name="password" class="form-control" [(ngModel)]="form.password" required
+                    placeholder="Password">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-success" value="Add" id="adduser" [disabled]="!AddUserForm.valid">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password Reset Modal HTML -->
+      <!-- <div id="passwordReset" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #passwordResetForm=ngForm (ngSubmit)="onReset()">
+              <div class="modal-header">
+                <h4 class="modal-title">Reset Password</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" class="form-control" [(ngModel)]="userEmail" required>
+                </div>
+                <div class="form-group">
+                  <label>New Password</label>
+                  <input type="password" name="password" class="form-control" [(ngModel)]="form.password" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-success" value="Add" id="passwordReset"
+                  [disabled]="!passwordResetForm.valid">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Delete Modal HTML -->
+      <div id="deleteUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Subadmin Successfuly deleted?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok" id="delete">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approval Modal HTML -->
+      <div id="approveUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>User Successfuly approved?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approval Modal HTML -->
+      <div id="disableUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>User Successfuly disabled?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+</div>
+
+<div class="main-content" *ngIf="role !== 'admin'">
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top w3-center"><code>Access Denied</code></h1>
+    <hr class="w3-border-white w3-animate-left" style="margin:auto;width:50%">
+    <h3 class="w3-center w3-animate-right">You dont have permission to view this page.</h3>
+    <h3 class="w3-center w3-animate-zoom">🚫🚫🚫🚫</h3>
+  </div>
+</div>

@@ -1,0 +1,218 @@
+<app-sidebar></app-sidebar>
+<div class="main-content">
+
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search"> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{user}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="dash-title">{{subject}}</h2>
+
+    <section class="recent">
+
+      <!-- Editable table -->
+      <div class="card">
+        <div class="th-card-body">
+          <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2" style="color:black">
+              <a href="#editDescription" class="text-warning" data-toggle="modal">
+                <i class="fas fa-edit fa-1x" aria-hidden="true"></i>
+              </a>&nbsp;Edit
+            </span>
+            <span class="table-add float-right mb-3 mr-2" style="color:black">
+              <a href="#addUser" class="text-success" data-toggle="modal">
+                <i class="fas fa-plus fa-1x" aria-hidden="true"></i>
+              </a>&nbsp;Add
+            </span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Id</th>
+                  <th class="text-center">Grade</th>
+                  <th class="text-center">Description</th>
+                  <th class="text-center">Date</th>
+                  <th class="text-center">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- This is our clonable table line -->
+                <tr *ngFor="let grade of grades">
+                  <td class="pt-3-half" contenteditable="true">{{grade?.id}}</td>
+                  <td class="pt-3-half" contenteditable="true" (click)="openGrade(grade?.name);"
+                    style="cursor: pointer;">{{grade?.name}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{grade?.description}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{grade?.date}}</td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#deleteUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="deleteGrade(grade?.id)">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <div class="clearfix">
+              <div class="hint-text">Showing <b>2</b> out of <b>25</b> entries</div>
+              <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Editable table -->
+
+      <!-- Edit Modal HTML -->
+      <div id="addUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #AddUserForm=ngForm (ngSubmit)="onSubmit()">
+              <div class="modal-header">
+                <h4 class="modal-title">Add Grade</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Select Grade</label>
+                  <input list="grade" name="name" placeholder="Select Grade" class="form-control"
+                    [(ngModel)]="form.name" required>
+                  <datalist id="grade">
+                    <option>Grade 8</option>
+                    <option>Grade 9</option>
+                    <option>Grade 10</option>
+                    <option>Grade 11</option>
+                    <option>Grade 12</option>
+                  </datalist>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input type="text" name="description" class="form-control" [(ngModel)]="form.description" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-success" value="Add" id="adduser" [disabled]="!AddUserForm.valid">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Modal HTML -->
+      <div id="editDescription" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #AddUserForm=ngForm (ngSubmit)="editDescription()">
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Grade Description</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>
+                    Search or Select Grade
+                  </label>
+                  <input list="field" name="name" class="form-control" [(ngModel)]="form.name" required>
+                  <datalist id="field">
+                    <option *ngFor="let grade of grades">
+                      {{grade?.name}}
+                    </option>
+                  </datalist>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input type="text" name="description" class="form-control" [(ngModel)]="form.description" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-success" value="Add" id="adduser" [disabled]="!AddUserForm.valid">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Delete Modal HTML -->
+      <div id="deleteUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Grade Successfuly deleted?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok" id="delete">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>

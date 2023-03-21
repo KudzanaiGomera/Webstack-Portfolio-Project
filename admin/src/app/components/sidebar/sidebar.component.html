@@ -1,0 +1,71 @@
+<input type="checkbox" id="sidebar-toggle">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h3 class="brand">
+      <span>Extreme Focus</span>
+    </h3>
+    <label for="sidebar-toggle" class="ti-menu-alt"></label>
+  </div>
+
+  <div class="sidebar-menu">
+    <ul>
+
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/home']">
+          <span class="ti-home"></span>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]="['active']" *ngIf="role === 'admin'">
+        <a [routerLink]="['/usermanagement']">
+          <span class="ti-user"></span>
+          <span>User Management</span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]="['active']" *ngIf="role === 'admin'">
+        <a [routerLink]="['/subadminmanagement']">
+          <span class="ti-user"></span>
+          <span>Sub Admin Management</span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/subjects']">
+          <span class="ti-book"></span>
+          <span>Subject Management</span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]="['active']" *ngIf="role === 'admin'">
+        <a [routerLink]="['/purchased']">
+          <span class="ti-credit-card"></span>
+          <span>Payment Management</span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/booking']">
+          <span class="ti-calendar"></span>
+          <span>Booking Management</span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/quiz']">
+          <span class="ti-help-alt"></span>
+          <span>Quiz Management</span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/account']">
+          <span class="ti-settings"></span>
+          <span>Account</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,207 @@
+<app-sidebar></app-sidebar>
+<div class="main-content">
+
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search"> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{user}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- <h2 class="dash-title">Creating a Quiz</h2> -->
+    <h2 class="dash-title">Choices Management</h2>
+    <section class="recent">
+      <!-- Editable table -->
+      <div class="card">
+        <div class="th-card-body">
+          <div id="table" class="table-editable">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Lesson</th>
+                  <th class="text-center">Question Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- This is our clonable table line -->
+                <tr>
+                  <td class="pt-3-half">{{lesson}}</td>
+                  <td class="pt-3-half">{{qnNumber}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+      <!-- Editable table -->
+    </section>
+    <section class="recent">
+
+      <!-- Editable table -->
+      <div class="card">
+        <div class="th-card-body">
+          <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2" style="color:black">
+              <a href="#edit" class="text-warning" data-toggle="modal">
+                <i class="fas fa-edit fa-1x" aria-hidden="true"></i>
+              </a>
+              &nbsp;Edit Choice</span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Id</th>
+                  <th class="text-center">Choice</th>
+                  <th class="text-center">IsCorrect</th>
+                  <!-- <th class="text-center">Remove</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <!-- This is our clonable table line -->
+                <tr *ngFor="let choice of choices">
+                  <td class="pt-3-half" contenteditable="true">{{choice?.id}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{choice?.coption}}</td>
+                  <td class="pt-3-half" contenteditable="true" *ngIf="choice?.is_correct === '1'">Yes</td>
+                  <td class="pt-3-half" contenteditable="true" *ngIf="choice?.is_correct === '0'">No</td>
+                  <!-- <td>
+                    <span class="table-remove">
+                      <a href="#deleteUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="deleteChoice(choice?.question_number, choice?.lesson)">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td> -->
+                </tr>
+              </tbody>
+            </table>
+            <!-- <div class="clearfix">
+              <div class="hint-text">Showing <b>2</b> out of <b>25</b> entries</div>
+              <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Editable table -->
+
+      <!-- Edit Modal HTML -->
+      <div id="edit" class="modal fade" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #EditForm=ngForm (ngSubmit)="onSubmit()">
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Choice</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>
+                    &nbsp;Search or Select Choice Id
+                  </label>
+                  <input list="quiz" name="selectedOption" class="form-control" [(ngModel)]="form.selectedOption">
+                  <datalist id="quiz">
+                    <option *ngFor="let choice of choices">
+                      {{choice?.id}}
+                    </option>
+                  </datalist>
+                </div>
+                <div class="form-group">
+                  <label>Edit Answer</label>
+                  <textarea name="coption" class="form-control" id="exampleTextarea1" rows="4"
+                    placeholder="what is ....." [(ngModel)]="form.coption" required></textarea>
+                </div>
+                <!-- <div class="form-group">
+                  <label>Correct Choice Number</label>
+                  <input type="number" name="correct_choice" class="form-control" id="exampleInputTitle" placeholder="0"
+                    [(ngModel)]="form.correct_choice" required>
+                </div> -->
+              </div>
+              <div *ngIf="form.selectedOption" class="progress my-3">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                  attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }">
+                  {{ progress }}%
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel"
+                  onClick="window.location.reload();">
+                <input type="submit" class="btn btn-success" value="Add" id="adduser">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Modal HTML -->
+      <div id="deleteUser" class="modal fade" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Choice Successfuly deleted</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok" id="delete">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>

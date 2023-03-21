@@ -1,0 +1,191 @@
+<app-sidebar></app-sidebar>
+<div class="main-content" *ngIf="role === 'admin'">
+
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search"> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{user}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="dash-title">Payment Management</h2>
+
+    <section class="recent">
+
+      <!-- Editable table -->
+      <div class="card">
+        <div class="th-card-body">
+          <div id="table" class="table-editable">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Subject</th>
+                  <th class="text-center">Topic</th>
+                  <th class="text-center">Email</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Pay</th>
+                  <th class="text-center">Unpay</th>
+                  <th class="text-center">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- This is our clonable table line -->
+                <tr *ngFor="let user of users">
+                  <td class="pt-3-half" contenteditable="true">{{user?.subject}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{user?.topic}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{user?.email}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{user?.status}}</td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#approveUser" data-toggle="modal">
+                        <button type="button" class="btn btn-success btn-rounded btn-sm my-0"
+                          (click)="paySubject(user?.id)">
+                          <i class="material-icons" data-toggle="tooltip"><i class="fa fa-check-circle"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#disableUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="unPaySubject(user?.id)">
+                          <i class="material-icons" data-toggle="tooltip"><i class="fa fa-ban"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#deleteUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="deleteSub(user?.id)">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <div class="clearfix">
+              <div class="hint-text">Showing <b>2</b> out of <b>25</b> entries</div>
+              <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Editable table -->
+
+      <!-- Delete Modal HTML -->
+      <div id="deleteUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Subject Successfuly deleted?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok" id="delete">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approval Modal HTML -->
+      <div id="approveUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Payment approved?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approval Modal HTML -->
+      <div id="disableUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Subject disabled?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+</div>
+
+<div class="main-content" *ngIf="role !== 'admin'">
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top w3-center"><code>Access Denied</code></h1>
+    <hr class="w3-border-white w3-animate-left" style="margin:auto;width:50%">
+    <h3 class="w3-center w3-animate-right">You dont have permission to view this page.</h3>
+    <h3 class="w3-center w3-animate-zoom">🚫🚫🚫🚫</h3>
+  </div>
+</div>

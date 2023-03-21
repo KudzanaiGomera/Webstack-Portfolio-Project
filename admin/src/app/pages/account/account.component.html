@@ -1,0 +1,120 @@
+<app-sidebar></app-sidebar>
+<div class="main-content">
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search" /> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{username}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="dash-title">Account Settings</h2>
+
+    <div class="container rounded bg-white mt-5 mb-5" *ngFor="let pro of profile">
+      <div class="row">
+        <div class="col-md-5 border-right">
+          <form #profileForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="p-3 py-5">
+              <div class="alert alert-success" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels">Name</label>
+                  <input type="text" name="newName" class="form-control" placeholder="{{ username }}"
+                    [(ngModel)]="form.newName" required>
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Email</label>
+                  <input type="text" name="email" class="form-control" placeholder="{{pro?.email}}"
+                    [(ngModel)]="form.email" required>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label class="labels">Password</label>
+                  <input type="text" name="country" class="form-control" placeholder="password"
+                    [(ngModel)]="form.password" required>
+                </div>
+              </div>
+              <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" [disabled]="!profileForm.valid">
+                  Save Profile
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 py-5">
+            <div class="col-md-12">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5" *ngFor="let profile of pic">
+                <img class="rounded-circle mt-5" width="150px" height="150px"
+                  src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No profile">
+                <span class="font-weight-bold">{{username}}</span>
+              </div>
+              <form #profilePicForm="ngForm" (ngSubmit)="onUpload()">
+                <div class="alert alert-success" [hidden]="!error">
+                  {{error}}
+                </div>
+                <div class="alert alert-success" [hidden]="!success">
+                  {{success}}
+                </div>
+                <div class="form-group">
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                    (change)="onFileSelected($event)" required>
+                  <br />
+                  <button class="btn btn-primary profile-button" [disabled]="!profilePicForm.valid">
+                    Upload Image
+                  </button>
+                </div>
+                <div *ngIf="selectedFile" class="progress my-3">
+                  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                    attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress }}%
+                  </div>
+                </div>
+              </form>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

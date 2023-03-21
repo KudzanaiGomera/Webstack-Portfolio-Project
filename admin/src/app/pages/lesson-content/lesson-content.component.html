@@ -1,0 +1,249 @@
+<app-sidebar></app-sidebar>
+<div class="main-content">
+
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search"> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{user}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="dash-title">{{lesson}}</h2>
+
+    <!-- Editable table -->
+    <div class="card">
+      <div class="th-card-body">
+        <div id="table" class="table-editable">
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <thead>
+              <tr>
+                <th class="text-center">Grade</th>
+                <th class="text-center">Subject</th>
+                <th class="text-center">Topic</th>
+                <th class="text-center">Sub Topic</th>
+                <th class="text-center">Lesson</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- This is our clonable table line -->
+              <tr>
+                <td class="pt-3-half">{{grade}}</td>
+                <td class="pt-3-half">{{subject}}</td>
+                <td class="pt-3-half">{{topic}}</td>
+                <td class="pt-4-half">{{subtopic}}</td>
+                <td class="pt-4-half">{{lesson}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <!-- Editable table -->
+
+
+    <section class="recent">
+
+      <!-- Editable table -->
+      <div class="card">
+        <div class="th-card-body">
+          <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2" style="color:black">
+              <a href="#addUser" class="text-success" data-toggle="modal">
+                <i class="fas fa-plus fa-1x" aria-hidden="true"></i>
+              </a>&nbsp;Video
+            </span>
+            <span class="table-add float-right mb-3 mr-2" style="color:black">
+              <a href="#addLesson" class="text-success" data-toggle="modal">
+                <i class="fas fa-plus fa-1x" aria-hidden="true"></i>
+              </a>&nbsp;Document
+            </span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Document</th>
+                  <th class="text-center">Video</th>
+                  <th class="text-center">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- This is our clonable table line -->
+                <tr *ngFor="let lesson of lessons">
+                  <td class="pt-3-half" contenteditable="true">{{lesson?.name}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{lesson?.document}}</td>
+                  <td class="pt-3-half" contenteditable="true">{{lesson?.video}}</td>
+                  <td>
+                    <span class="table-remove">
+                      <a href="#deleteUser" data-toggle="modal">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
+                          (click)="deleteContent(lesson?.id)">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></i>
+                        </button>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <div class="clearfix">
+              <div class="hint-text">Showing <b>2</b> out of <b>25</b> entries</div>
+              <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Editable table -->
+
+      <!-- Edit Modal HTML -->
+      <div id="addUser" class="modal fade" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #AddUserForm=ngForm (ngSubmit)="onSubmit()">
+              <div class="modal-header">
+                <h4 class="modal-title">Add Video</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Title</label>
+                  <input type="text" name="name" class="form-control" [(ngModel)]="form.name" required>
+                </div>
+                <div class="form-group">
+                  <label>Upload Video</label>
+                  <input type="file" name="video" accept="video/mp4" class="form-control-file"
+                    id="exampleFormControlFile2" (change)="onVideoSelected($event)">
+                  <br />
+                </div>
+              </div>
+              <div *ngIf="onVideoSelected" class="progress my-3">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                  attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }">
+                  {{ progress }}%
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-success" value="Add" id="adduser" [disabled]="!AddUserForm.valid">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Modal HTML -->
+      <div id="addLesson" class="modal fade" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #AddUserForm=ngForm (ngSubmit)="onSubmit2()">
+              <div class="modal-header">
+                <h4 class="modal-title">Add Document</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  onClick="window.location.reload();">&times;</button>
+              </div>
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>
+              <div class="alert alert-success" [hidden]="!success">
+                {{success}}
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Title</label>
+                  <input type="text" name="name" class="form-control" [(ngModel)]="form.name" required>
+                </div>
+                <div class="form-group">
+                  <label>Upload Document</label>
+                  <input type="file" name="document" accept="application/pdf,.ppt, .pptx" class="form-control-file"
+                    id="exampleFormControlFile3" (change)="onDocumentSelected($event)">
+                  <br />
+                </div>
+              </div>
+              <div *ngIf="onDocumentSelected" class="progress my-3">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                  attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }">
+                  {{ progress }}%
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-success" value="Add" id="adduser" [disabled]="!AddUserForm.valid">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Modal HTML -->
+      <div id="deleteUser" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Content Successfuly deleted?</p>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-success" data-dismiss="modal" value="ok" id="delete">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>

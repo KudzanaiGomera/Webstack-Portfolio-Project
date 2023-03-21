@@ -1,0 +1,138 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+
+  <header>
+    <div class="search-wrapper">
+      <!-- <span class="ti-search"></span>
+      <input type="search" placeholder="Search"> -->
+    </div>
+
+    <div class="social-icons">
+      <!-- <span class="ti-bell"></span>
+      <span class="ti-comment"></span> -->
+      <div class="dropdown" *ngFor="let profile of pic">
+        <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+        <div class="dropdown-content">
+          <ul class="menu">
+            <li>
+              <a>
+                <span class="ti-user"></span>
+                <span>{{user}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/account']">
+                <span class="ti-settings"></span>
+                <span>Account</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout($event)" style="cursor: pointer;">
+                <span class="ti-power-off"></span>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="dash-title">Dashboard</h2>
+
+    <div class="dash-cards">
+      <div class="card-single">
+        <div class="card-body">
+          <span class="ti-user"></span>
+          <div>
+            <h5>Users</h5>
+            <h4>{{numberOfUsers}}</h4>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/usermanagement']">View all</a>
+        </div>
+      </div>
+
+      <div class="card-single">
+        <div class="card-body">
+          <span class="ti-book"></span>
+          <div>
+            <h5>Courses</h5>
+            <h4>{{numberOfSubjects}}</h4>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/subjects']">View all</a>
+        </div>
+      </div>
+
+      <div class="card-single">
+        <div class="card-body">
+          <span class="ti-shopping-cart"></span>
+          <div>
+            <h5>Purchased Courses</h5>
+            <h4>{{numberOfContent}}</h4>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/purchased']">View all</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="recent">
+      <div class="activity-grid">
+        <div class="activity-card">
+          <h3>Recent added Users</h3>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{user?.id}}</td>
+                  <td>{{user?.name}}</td>
+                  <td>{{user?.email}}</td>
+                  <td>{{user?.status}}</td>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <a [routerLink]="['/usermanagement']">View all</a>
+          </div>
+        </div>
+
+        <div class="summary">
+          <div class="bday-card">
+            <div class="bday-flex">
+              <div class="bday-img" *ngFor="let profile of pic">
+                <img src="https://sgcholdings.co.za/Backend{{profile.image}}" alt="No pic">
+              </div>
+              <div class="bday-info">
+                <h5>{{user}}</h5>
+              </div>
+            </div>
+            <div class="text-center">
+              <button (click)="goToAccount()">
+                <span class="ti-settings"></span>
+                Settings
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+</div>
